@@ -1,16 +1,24 @@
-import java.util.Scanner;
+public class Dealer implements Seller{
 
-public class Dealer {
-    Dealer bag = new Dealer(){
-        int zellieDealer = 100;
-    }
-    void ZellieDo(){
-        int health + 10;
-    }
-    void Order() {
-        if (Scanner = "купить зелье"){
-            int zellieDealer --;
-            int zellieUser ++;
+    @Override
+    public String sell(Goods goods) {
+        String result = "";
+        if (goods == Goods.POTION) {
+            result = "продал зелье";
         }
+        return result;
+    }
+
+    @Override
+    public String buy(Goods goods) {
+        String result = "";
+        if (goods == Goods.FOOD) {
+            result = "купил еду";
+        }
+        return result;
+    }
+
+    public enum Goods {
+        POTION, FOOD
     }
 }

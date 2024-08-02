@@ -24,6 +24,12 @@ public abstract class Character implements Fighter{
         else return  0; //приравнивается к промаху
     }
 
+    @Override
+    public int kritAttack() {
+        if (30 >= getRandomValue() && 1 <= getRandomValue()) strength *= 1.3;
+        else return strength;
+    }
+
     public String getName() {
         return name;
     }
@@ -72,11 +78,8 @@ public abstract class Character implements Fighter{
         this.gold = gold;
     }
 
-    private int getRandomValueSucksess() {
+    private int getRandomValue() {
         return (int) (Math.random() * 100);
-    }
-
-    private int getRandomValueKrit
 
     @Override
     public String toString() {
