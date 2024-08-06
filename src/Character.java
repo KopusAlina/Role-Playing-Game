@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public abstract class Character implements Fighter{
+public abstract class Character implements Fighter {
 
     private String name;
     private int health;
@@ -21,7 +21,7 @@ public abstract class Character implements Fighter{
     @Override
     public int attack() {
         if (dexterity * 3 > getRandomValue()) return strength;
-        else return  0; //приравнивается к промаху
+        else return 0; //приравнивается к промаху
     }
 
     @Override
@@ -81,8 +81,9 @@ public abstract class Character implements Fighter{
     private int getRandomValue() {
         return (int) (Math.random() * 100);
 
-    @Override
-    public String toString() {
-        return String.format("%s здоровье:%d", name, health);
+        @Override
+        public String toString () {
+            return String.format("%s здоровье:%d", name, health);
+        }
     }
 }

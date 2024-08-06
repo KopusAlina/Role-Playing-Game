@@ -63,5 +63,24 @@ public class Battle {
             defender.setHealth(defenderHealth);
             return false;
         }
+        private static void commitFight() {
+            battleScene.fight(player, createMonster(), new FightCallback() {
+                @Override
+                public void fightWin() {
+                    System.out.println(String.format("%s победил! Теперь у вас %d опыта и %d золота, а также осталось %d едениц здоровья.", player.getName(), player.getXp(), player.getGold(), player.getHealthPoints()));
+                    System.out.println("Желаете продолжить поход или вернуться в город? (да/нет)");
+                    try {
+                        command(br.readLine());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void fightLost() {
+
+                }
+            });
+        }
     }
 }
