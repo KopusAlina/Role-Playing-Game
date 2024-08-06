@@ -1,7 +1,4 @@
-import java.io.IOException;
-
 public class Battle {
-
     //Метод, который вызывается при начале боя, сюда мы передаем ссылки на нашего героя и монстра, который встал у него на пути
     public void fight(Character hero, Character monster, FightCallback fightCallback) {
         //Ходы будут идти в отдельном потоке
@@ -31,7 +28,6 @@ public class Battle {
         Thread thread = new Thread(runnable);
         thread.start();
     }
-
     //Метод для совершения удара
     private Boolean makeHit(Character defender, Character attacker, FightCallback fightCallback) {
         //Получаем силу удара

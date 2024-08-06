@@ -2,12 +2,12 @@ public abstract class Character implements Fighter {
 
     private String name;
     private int health;
-    private int strength;
-    private int dexterity;
+    private int strength; //сила
+    private int dexterity; //ловкость
     private int exp;
     private int gold;
 
-    public Character(String name, int health, int power, int agility, int exp, int gold) {
+    public Character(String name, int health, int strength, int dexterity, int exp, int gold) {
         this.name = name;
         this.health = health;
         this.strength = strength;
