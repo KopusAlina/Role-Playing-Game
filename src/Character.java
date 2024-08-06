@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public abstract class Character implements Fighter {
 
     private String name;
@@ -28,6 +26,7 @@ public abstract class Character implements Fighter {
     public int kritAttack() {
         if (30 >= getRandomValue() && 1 <= getRandomValue()) strength *= 1.3;
         else return strength;
+        return 0;
     }
 
     public String getName() {
@@ -80,10 +79,9 @@ public abstract class Character implements Fighter {
 
     private int getRandomValue() {
         return (int) (Math.random() * 100);
-
-        @Override
-        public String toString () {
-            return String.format("%s здоровье:%d", name, health);
-        }
+    }
+    @Override
+    public String toString() {
+        return String.format("%s здоровье:%d", name, health);
     }
 }

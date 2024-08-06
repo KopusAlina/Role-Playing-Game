@@ -1,7 +1,9 @@
+import java.io.IOException;
+
 public class Battle {
 
     //Метод, который вызывается при начале боя, сюда мы передаем ссылки на нашего героя и монстра, который встал у него на пути
-    public void fight(Character hero, Character monster, Realm.FightCallback fightCallback) {
+    public void fight(Character hero, Character monster, FightCallback fightCallback) {
         //Ходы будут идти в отдельном потоке
         Runnable runnable = () -> {
             //Сюда будем записывать, какой сейчас ход по счету
@@ -31,7 +33,7 @@ public class Battle {
     }
 
     //Метод для совершения удара
-    private Boolean makeHit(Character defender, Character attacker, Realm.FightCallback fightCallback) {
+    private Boolean makeHit(Character defender, Character attacker, FightCallback fightCallback) {
         //Получаем силу удара
         int hit = attacker.attack();
         //Отнимаем количество урона из здоровья защищающегося
@@ -62,25 +64,6 @@ public class Battle {
             //если защищающийся не повержен, то мы устанавливаем ему новый уровень здоровья
             defender.setHealth(defenderHealth);
             return false;
-        }
-        private static void commitFight() {
-            battleScene.fight(player, createMonster(), new FightCallback() {
-                @Override
-                public void fightWin() {
-                    System.out.println(String.format("%s победил! Теперь у вас %d опыта и %d золота, а также осталось %d едениц здоровья.", player.getName(), player.getXp(), player.getGold(), player.getHealthPoints()));
-                    System.out.println("Желаете продолжить поход или вернуться в город? (да/нет)");
-                    try {
-                        command(br.readLine());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                @Override
-                public void fightLost() {
-
-                }
-            });
         }
     }
 }

@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 public class Realm {
 
@@ -65,15 +64,23 @@ public class Realm {
                 command(br.readLine());
             }
         }
+
         //Снова ждем команды от пользователя
         command(br.readLine());
+    }
+
+    private static void printNavigation() {
+        System.out.println("Куда вы хотите пойти?");
+        System.out.println("1. К Торговцу");
+        System.out.println("2. В темный лес");
+        System.out.println("3. Выход");
     }
 
     private static void commitFight() {
         battleScene.fight(player, createMonster(), new FightCallback() {
             @Override
             public void fightWin() {
-                System.out.println(String.format("%s победил! Теперь у вас %d опыта и %d золота, а также осталось %d едениц здоровья.", player.getName(), player.getXp(), player.getGold(), player.getHealthPoints()));
+                System.out.println(String.format("%s победил! Теперь у вас %d опыта и %d золота, а также осталось %d единиц здоровья.", player.getName(), player.getExp(), player.getGold(), player.getHealth()));
                 System.out.println("Желаете продолжить поход или вернуться в город? (да/нет)");
                 try {
                     command(br.readLine());
