@@ -31,11 +31,11 @@ public class Battle {
     }
 
     //Метод для совершения удара
-    private Boolean makeHit(FantasyCharacter defender, FantasyCharacter attacker, Realm.FightCallback fightCallback) {
+    private Boolean makeHit(Character defender, Character attacker, Realm.FightCallback fightCallback) {
         //Получаем силу удара
         int hit = attacker.attack();
         //Отнимаем количество урона из здоровья защищающегося
-        int defenderHealth = defender.getHealthPoints() - hit;
+        int defenderHealth = defender.getHealth() - hit;
         //Если атака прошла, выводим в консоль сообщение об этом
         if (hit != 0) {
             System.out.println(String.format("%s Нанес удар в %d единиц!", attacker.getName(), hit));
@@ -52,15 +52,15 @@ public class Battle {
             return true;
         } else if(defenderHealth <= 0) {
             //Если здоровья больше нет и защищающийся – это монстр, то мы забираем от монстра его опыт и золото
-            System.out.println(String.format("Враг повержен! Вы получаете %d опыт и %d золота", defender.getXp(), defender.getGold()));
-            attacker.setXp(attacker.getXp() + defender.getXp());
+            System.out.println(String.format("Враг повержен! Вы получаете %d опыт и %d золота", defender.getExp(), defender.getGold()));
+            attacker.setExp(attacker.getExp() + defender.getExp());
             attacker.setGold(attacker.getGold() + defender.getGold());
             //вызываем коллбэк, что мы победили
             fightCallback.fightWin();
             return true;
         } else {
             //если защищающийся не повержен, то мы устанавливаем ему новый уровень здоровья
-            defender.setHealthPoints(defenderHealth);
+            defender.setHealth(defenderHealth);
             return false;
         }
     }
